@@ -1,0 +1,11 @@
+.reply {
+	font-size: 2px;
+	background: #aeaeae;
+	border-radius: 15px;
+	padding: 5px;
+	margin-top: 10px;
+}
+
+.reply .text-reply{
+	font-size: 16px;
+}

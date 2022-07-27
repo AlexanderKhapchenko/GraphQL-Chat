@@ -1,0 +1,64 @@
+type Query {
+  info: String!
+  messages(search: String, filter: String, skip: Int, first: Int, orderBy: MessageOrderByInput): Messages!
+}
+
+enum MessageOrderByInput {
+  title_DESC
+  title_ASC
+  createdAt_DESC
+  createdAt_ASC
+  likes_ASC
+  likes_DESC
+  dislikes_ASC
+  dislikes_DESC
+}
+
+type Mutation {
+  postMessage(text: String!, likes: Int!, dislikes: Int!): Message!
+  postReply(text: String!, message: ID!): Reply!
+	updateMessageLike(id: ID!, likes: Int!): Message!
+	updateMessageDislike(id: ID!, dislikes: Int!): Message!
+}
+
+type Subscription {
+  newMessage: Message
+  newReply: Reply
+  changeMessage: Message
+}
+
+type Messages {
+  messageList: [Message!]!
+}
+
+type Message {
+  id: ID!
+  text: String!
+  likes: Int!
+  dislikes: Int!
+  replies: [Reply!]!
+}
+
+type Reply {
+  id: ID! 
+  text: String!
+  message: Message!
+}
+
+# type Products {
+#   productList: [Product!]!
+#   count: Int!
+# }
+
+# type Product {
+#   id: ID!
+#   title: String!
+#   price: Float!
+#   reviews: [Review!]
+# }
+
+# type Review {
+#   id: ID!
+#   text: String!
+#   product: Product!
+# }

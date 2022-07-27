@@ -1,0 +1,15 @@
+type Message {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  text: String!
+  likes: Int! 
+  dislikes: Int! 
+  replies: [Reply!]! 
+}
+
+type Reply {
+  id: ID! @id
+  message: Message!
+  createdAt: DateTime! @createdAt
+  text: String!
+}
